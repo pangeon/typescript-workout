@@ -54,12 +54,17 @@
 
 /* 4 */
     function repeat(text: string, mult: number): string {
-        const mult_text: string[] = new Array(text.length*mult);
-        return mult_text.toString();
+        const multText: string[] = new Array(mult);
+        multText.fill(text);
+        return multText.join("");
     }
     console.log("Task -- nr. 4:");
-    console.log(repeat("Kwas", 7));
+    console.log(repeat("Error... ", 10));
 /* 4 */
+
+
+
+
 
 
 
