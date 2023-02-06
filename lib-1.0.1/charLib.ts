@@ -62,6 +62,33 @@
     console.log(repeat("Error... ", 10));
 /* 4 */
 
+/* 5 */
+    function isAlpha(text: string): boolean {
+        const regex = new RegExp("^[a-zA-Z]+$");
+        return regex.test(text);
+    }
+    console.log("Task -- nr. 5:");
+    console.log(isAlpha("Wojna i Pokój"));
+    console.log(isAlpha("Pokuta"));
+    console.log(isAlpha("1Q84"));
+/* 5 */
+
+/* 6 */
+    function isBlank(text: string): boolean {
+
+        while(text[0] === " ") {
+            text = text.slice(1);
+        }
+        const result = text === "";
+        return result;
+
+    }
+    console.log("Task -- nr. 6:");
+    console.log(isBlank("Wojna i Pokój")); // false
+    console.log(isBlank("             ")); // true
+    console.log(isBlank(""));              // true 
+/* 6 */
+
 
 
 
