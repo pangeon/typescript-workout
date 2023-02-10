@@ -32,7 +32,7 @@ import {dataLength, europeanCountries} from "./data";
 
     /* RES */
     const standardDeviation = Math.sqrt(totalSD / squareDiffs.length);
-    
+
     console.log("Average:", average, "km^2");
     console.log("Standard deviation:", standardDeviation, "km^2");
 /* Procedure 2 */
