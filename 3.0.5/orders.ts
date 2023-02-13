@@ -1,10 +1,10 @@
-interface Order {
+export interface Order {
     id: number;
     color: string;
     size: string
 }
 
-const createOrder = (color: string, size: string, quantity: number): Order[] => {
+export const createOrder = (color: string, size: string, quantity: number): Order[] => {
     let id = 0;
     const orders = [];
     for (let i = 0; i < quantity; i++) {
@@ -13,7 +13,7 @@ const createOrder = (color: string, size: string, quantity: number): Order[] => 
     return orders;
 };
 
-const orderFactory = (): ((color: string, size: string, quantity: number) => Order[]) => {
+export const orderFactory = (): ((color: string, size: string, quantity: number) => Order[]) => {
     let id = 0;
     return (color: string, size: string, quantity: number): Order[] => {
         const orders = [];
