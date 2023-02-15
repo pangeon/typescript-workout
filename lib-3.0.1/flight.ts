@@ -17,6 +17,13 @@ export const addNewFlight =
     flights.push(flight);
 }
 
+export const isSeatsAvailable = (cityName: string): boolean => {
+    if (getFlightByCityName(cityName).seatsRemaining > 0) {
+        console.log("Reservations approved !");
+        return true;
+    }
+    throw Error("No vacancies !");
+}
 export const printFlightByCityName = (cityName: string): void => {
     if (isEmpty(getFlightByCityName(cityName))) {
         console.log("Flight unavailable !");

@@ -2,6 +2,7 @@ import {isEmpty} from "./utils";
 import {bookings} from "./data";
 import {Booking} from "./interfaces/interfaceBooking";
 import {getFlightByCityName} from "./flight";
+import {Flight} from "./interfaces/interfaceFlight";
 
 export const getBookingByNumber = (id: number): Booking => {
     let selectedBooking: {} = {};
@@ -13,10 +14,15 @@ export const getBookingByNumber = (id: number): Booking => {
 }
 
 export const addNewBooking =
-    (bookingNumber: number, flightCityName: string, paid: boolean, seatsHeld: number, seatsReserved: number): void => {
-    const booking: Booking = {
-        bookingNumber, flight: getFlightByCityName(flightCityName), paid, seatsHeld, seatsReserved
-    }
+    (bookingNumber: number, flightCityName: string, paid: boolean, seatsReserved: number): void => {
+    let reservedFlight: Flight = getFlightByCityName(flightCityName), seatsHeld: number;
+
+    seatsHeld = seatsReserved;
+    reservedFlight.seatsHeld += seatsReserved;
+    reservedFlight.seatsRemaining -= seatsHeld;
+    paid = true;
+
+    const booking: Booking = { bookingNumber, flight: reservedFlight, paid, seatsHeld, seatsReserved }
     bookings.push(booking);
 }
 

@@ -1,15 +1,23 @@
-import {getFlightByCityName, printAllFlightsList} from "./flight";
+import {getFlightByCityName, isSeatsAvailable, printAllFlightsList} from "./flight";
 import {addNewBooking, printAllBookingsList, printBookingByNumber} from "./bookings";
 import {Booking} from "./interfaces/interfaceBooking";
 
-console.log("--- All flights list ---");
-printAllFlightsList();
-
 console.log("1. --- Create new reservation --- ");
-addNewBooking(2, "Toronto", true, 0, 1);
-printBookingByNumber(2);
-//printAllBookingsList();
 
-console.log("--- All bookings list ---");
-printAllBookingsList();
+const reserveAndCheckFlight = (cityName: string, seatReserved: number, bookingNumber: number) => {
+    if (isSeatsAvailable(cityName)) addNewBooking(bookingNumber, cityName, true, seatReserved);
+    printBookingByNumber(bookingNumber);
+};
+
+try {
+    reserveAndCheckFlight("Chicago", 1, 2);
+    reserveAndCheckFlight("Chicago", 1, 3);
+    reserveAndCheckFlight("Chicago", 1, 4);
+} catch(Error) {
+    console.log("Booking unavailable !")
+}
+
+
+
+
 
