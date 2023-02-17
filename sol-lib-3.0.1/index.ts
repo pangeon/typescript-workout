@@ -12,8 +12,8 @@ console.log('Flight to Lagos', destinations[0]);
 
 try {
     startBooking(destinations[5], 7);
-} catch ({message}) {
-    console.error(message);
+} catch ({e}) {
+    console.log((e as Error).message);
 }
 
 let istanbulBooking = startBooking(destinations[6], 7);
@@ -25,6 +25,6 @@ console.log('Flight to Istanbul', destinations[6]);
 
 try {
     startBooking(destinations[6], 1);
-} catch ({message}) {
-    console.error(message);
+} catch ({e}) {
+    console.log((e as Error).message);
 }
