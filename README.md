@@ -23,4 +23,41 @@ tsc <file_name>.ts
 ```
 node <file_name>.js
 ```
+3. Run typescript file without js
+
+```
+npx ts-node <file_name>.ts
+```
+
+# Test using
+Documentation: [JEST - Getting Started](https://jestjs.io/docs/getting-started)
+
+1. Add tsconfig.json
+```
+tsc --init 
+```
+
+2. Install npm packages:
+```
+npm install -D jest ts-jest @types/jest
+```
+
+3. Add basic config:
+```
+npx ts-jest config:init
+```
+
+4. Add in packages.json:
+```
+"scripts": {
+    "test": "jest --coverage"
+},
+```
+
+5. Run tests:
+```
+npm test
+```
+
+
 
