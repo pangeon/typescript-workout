@@ -8,4 +8,9 @@ console.log("Does the teacher token property? ", teacher.hasOwnProperty("token")
 const student: any = new Student(101, "Mario Bros");
 console.log("Does the student have a token? ", student["token"]);
 
-console.log(student, teacher);
+for (let i = 0; i < 10; i++) {
+    const teacher = new Teacher(i+1, "Joe Due");
+}
+
+console.log(teacher);
+console.log(student);
