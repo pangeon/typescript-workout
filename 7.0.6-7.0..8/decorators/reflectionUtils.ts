@@ -1,6 +1,7 @@
 import "reflect-metadata";
 
 export namespace MetaDataReflection {
+    
     export function showDescription(target: any) {
         if (Reflect.hasMetadata("description", target)) {
             const classDescription = Reflect.getMetadata("description", target);

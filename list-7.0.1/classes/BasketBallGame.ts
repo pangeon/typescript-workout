@@ -1,5 +1,37 @@
 import {Team} from "../interfaces/Team";
 
+export class BasketBallGame {
+    private visitingTeam: Team;
+    private homeTeam: Team;
+
+    constructor(visitingTeam: string, homeTeam: string) {
+        this.visitingTeam = {score: 0, name: visitingTeam};
+        this.homeTeam = {score: 0, name: homeTeam};
+    }
+
+    getScore(): string {
+        return `${this.visitingTeam.score}:${this.homeTeam.score}`;
+    };
+
+    updateScore(points: number, isHomeTeam: boolean): void {
+        checkPoints("updateScore", points, isHomeTeam);
+        const start = Date.now();
+        loadMemory();
+        if(isAuthorized("admin", "123pass")) {
+                if(validatePoints(points)) {
+                    isHomeTeam ? this.homeTeam.score += points : this.visitingTeam.score += points;
+                } else {
+                    console.log(`Invalid point value: ${points}`);
+                }
+            } else {
+                console.log("You do not have authorization it changes as a result.");
+            }
+            const end = Date.now();
+            logDuration("updateScore", start, end);
+    };
+
+}
+
 function isAuthorized(login: string, password: string): boolean {
     return login === "admin" && password === "123pass";
 }
@@ -34,34 +66,4 @@ function timeCounter(func: Function): Function {
         },
     };
     return result[func.name];
-}
-
-export class BasketBallGame {
-    private visitingTeam: Team;
-    private homeTeam: Team;
-
-    constructor(visitingTeam: string, homeTeam: string) {
-        this.visitingTeam = {score: 0, name: visitingTeam};
-        this.homeTeam = {score: 0, name: homeTeam};
-    }
-
-    getScore = (): string => `${this.visitingTeam.score}:${this.homeTeam.score}`;
-
-    updateScore = (points: number, isHomeTeam: boolean): void => {
-        checkPoints("updateScore", points, isHomeTeam);
-        const start = Date.now();
-        loadMemory();
-        if(isAuthorized("admin", "123pass")) {
-                if(validatePoints(points)) {
-                    isHomeTeam ? this.homeTeam.score += points : this.visitingTeam.score += points;
-                } else {
-                    console.log(`Invalid point value: ${points}`);
-                }
-            } else {
-                console.log("You do not have authorization it changes as a result.");
-            }
-            const end = Date.now();
-            logDuration("updateScore", start, end);
-    };
-
 }
