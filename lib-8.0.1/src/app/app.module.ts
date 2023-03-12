@@ -1,14 +1,16 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WelcomeMessageComponent } from './welcome-message/welcome-message.component';
-import { UserListComponent } from './user-list/user-list.component';
+import { UsersListComponent } from './user-list/user-list.component';
+import { UsersService } from './user.service';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { ApiHttpInterceptor } from './interceptors/api-http-interceptor';
 
 @NgModule({
-  declarations: [AppComponent, WelcomeMessageComponent, UserListComponent],
-  imports: [BrowserModule, AppRoutingModule],
-  providers: [],
+  declarations: [AppComponent, WelcomeMessageComponent, UsersListComponent],
+  imports: [BrowserModule, HttpClientModule],
+  providers: [UsersService, {provide: HTTP_INTERCEPTORS, useClass: ApiHttpInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -3,7 +3,8 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
-    <user-list></user-list>
+    <welcome-message></welcome-message>
+    <users-list></users-list>
   `
 })
 export class AppComponent {

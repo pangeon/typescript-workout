@@ -1,20 +1,21 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { User, UserService } from '../user.service';
+import { User, UsersService } from '../user.service';
 
 @Component({
-  selector: 'user-list',
+  selector: 'users-list',
   template: `
-  <ul>
-    <li *ngFor="let user of (users$ | async)">{{ user.name }}</li>
-  </ul>
-  `
+		<ul>
+			<li *ngFor="let user of (users$ | async)">
+				{{ user.name }}
+			</li>
+		</ul>
+	`,
 })
-export class UserListComponent {
+export class UsersListComponent {
   readonly users$: Observable<User[]>;
 
-  constructor(private usersService: UserService) {
+  constructor(private usersService: UsersService) {
     this.users$ = usersService.getUsers();
   }
-  
 }
