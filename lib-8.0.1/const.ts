@@ -1,3 +1,4 @@
 export const TYPES = {
-    AddOperator: Symbol.for('AddOperator'),
+    Operator: Symbol.for('Operator'),
+    
 };

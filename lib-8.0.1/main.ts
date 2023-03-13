@@ -1,9 +1,13 @@
 import 'reflect-metadata'
 
-import { AddOperator } from "./classes/AddOperator";
 import { Calculator } from "./classes/Calculator";
+import { container } from './config/ioc.config';
 
-const operator = new AddOperator();
-const calc = new Calculator(operator);
+const calculator = container.get(Calculator);
 
-console.log(calc.evaluate('1+8'));
+try {
+    const result = calculator.evaluate('13*10+20');
+    console.log('Calculation result:', result);
+} catch (err) {
+    console.log(err);
+}

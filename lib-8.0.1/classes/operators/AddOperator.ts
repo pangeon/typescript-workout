@@ -1,4 +1,4 @@
-import { Operator } from "../interfaces/Operator";
+import { Operator } from "../../interfaces/Operator";
 import { injectable } from "inversify";
 
 @injectable()
