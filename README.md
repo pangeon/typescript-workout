@@ -1,7 +1,7 @@
 # typescript-workout
 
-exercises from: [link](https://www.packtpub.com/product/the-typescript-workshop/9781838828493)
-authors repository: [link](https://github.com/PacktWorkshops/The-TypeScript-Workshop)
+- exercises from: [link](https://www.packtpub.com/product/the-typescript-workshop/9781838828493)
+- authors repository: [link](https://github.com/PacktWorkshops/The-TypeScript-Workshop)
 
 # Requirements
 
