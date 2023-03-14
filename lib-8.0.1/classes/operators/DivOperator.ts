@@ -5,7 +5,8 @@ import { Operator } from "../../interfaces/Operator";
 export class DivOperator implements Operator {
     symbol: string = '/';
 
-    evaluate(a: number, b: number): number {        
-        return a/b;
+    evaluate(a: number, b: number): any {
+        if (b !== 0) return a/b;
+        return undefined;
     }
 }
