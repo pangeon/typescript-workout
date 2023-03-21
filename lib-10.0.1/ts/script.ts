@@ -1,5 +1,5 @@
-import { addHTMLToBody, clearResult, showResult} from "./display.js";
-import { CastResultApi, MovieResultApi, PeopleResultApi, SearchResultApi, Character } from "./interfaces.js";
+import { addHTMLToBody, clearResult} from "./display.js";
+import { MovieResultApi, PeopleResultApi, SearchResultApi, Character } from "./interfaces.js";
 
 const apiKey = "aeb19f32c3d862ba3c7464891bf9beff";
 const domain = "https://api.themoviedb.org";
@@ -41,11 +41,6 @@ function showMovie(id: number): void {
             addHTMLToBody("h4", response.release_date);
             addHTMLToBody("p", response.overview);
             addHTMLToBody("img", `http://image.tmdb.org/t/p/w500/${response.poster_path}`, "src");
-            // const body = document.getElementsByTagName("body")[0];
-            // const img = document.createElement("img");
-            // img.setAttribute("src", `http://image.tmdb.org/t/p/w500/${response.poster_path}`);
-            // body.appendChild(img);
-            
         }
     }
 }
