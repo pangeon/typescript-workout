@@ -1,4 +1,6 @@
-const getCastElements = (movie: Movie) => movie.characters.map(character => {
+import { Movie } from "./interfaces.js";
+
+export const getCastElements = (movie: Movie) => movie.characters.map(character => {
     const image = character.image
         ? `<img src="http://image.tmdb.org/t/p/w185/${character.image}" class="image" />`
         : `<img src="https://via.placeholder.com/185x277.png?text=No+Image" class="image" />`;
@@ -11,7 +13,7 @@ const getCastElements = (movie: Movie) => movie.characters.map(character => {
     </div>`;
 }).join("");
 
-const getRuntime = ({ runtime }: Movie) => {
+export const getRuntime = ({ runtime }: Movie) => {
   if (!runtime) {
     // do not display the runtime field if we don't know the runtime
     return "";
@@ -25,7 +27,7 @@ const getRuntime = ({ runtime }: Movie) => {
   return `<div class="runtime detail"><strong>Run time: </strong>${hours}h ${minutes}min</div>`;
 };
 
-const showResults = (movie: Movie) => {
+export const showResults = (movie: Movie) => {
   const backdropUrl = `http://image.tmdb.org/t/p/w1280/${movie.backdropUrl}`;
   document.body.style.backgroundImage = `url('${backdropUrl}')`;
 
@@ -52,7 +54,7 @@ const showResults = (movie: Movie) => {
     </div>`;
 };
 
-const clearResults = (search: string) => {
+export const clearResults = (search: string) => {
     document.body.style.backgroundImage = "";
 
     const result = document.getElementById("result")!;

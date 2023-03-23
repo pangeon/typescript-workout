@@ -1,3 +1,6 @@
+import { showResults, clearResults } from "./display.js";
+import { Character, Movie, MovieResultApi, PeopleResultApi, SearchResultApi } from "./interfaces.js";
+
 const server = "https://api.themoviedb.org/3/";
 const apiKey = 'aeb19f32c3d862ba3c7464891bf9beff';
 

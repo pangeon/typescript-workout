@@ -2,7 +2,7 @@
 
 1. Install dependencies with `npm i`.
 
-2. Compile the program with `tsc ./script.ts ./interfaces.ts ./display.ts`.
+2. Compile the program with `npm run compile`.
 
 3. Verify that the compilation ended successfully.
 
