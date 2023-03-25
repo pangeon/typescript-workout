@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@types/http-server": "^0.12.1"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.9"
+  }
+}
