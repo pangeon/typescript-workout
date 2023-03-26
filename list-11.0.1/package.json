@@ -1,8 +1,10 @@
 {
   "dependencies": {
-    "@types/http-server": "^0.12.1"
+    "@types/http-server": "^0.12.1",
+    "node-fetch": "^2.6.9"
   },
   "devDependencies": {
-    "@types/node": "^18.15.9"
+    "@types/node": "^18.15.9",
+    "@types/node-fetch": "^2.6.2"
   }
 }
