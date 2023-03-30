@@ -8,7 +8,43 @@
   </head>
   <body>
     <main>
-        <h1>list 11.0.2</h1>  
+        <h1>list 11.0.2</h1>
+        <h3>URLS:</h3>
+        <a href="http://localhost:3000/Jan%20Kowalski/friends">Jan Kowalski</a><br />
+        <a href="http://localhost:3000/Adam%20Nowak/friends">Adam Nowak</a>
+        <h3>Schema:</h3>
+        <pre>
+          CREATE TABLE users (
+          id INTEGER PRIMARY KEY,
+          name text,
+          email text UNIQUE,
+          is_admin INTEGER DEFAULT 0 CHECK (is_admin IN (0, 1)),
+          friends TEXT)
+        </pre>
+        <h3>Code app:</h3>
+        <pre>
+          app.get('/:name/friends', (req, res) => {
+            const name = req.params.name;
+        
+            db.get(`SELECT id FROM users WHERE name = ?`, [name], (err, row: UserRow) => {
+                if (err) return res.status(500).end();
+        
+                getUserPrivacyPreferences(row, (err, is_admin) => {
+                    if (err) return res.status(500).end();
+                    if (!canOtherViewFriends(is_admin)) {
+                        return res.status(403).send({ error: "You don't have permission to view this user's friends" }).end();
+                    } else {
+                        getFriends(row, (err, friends) => {
+                            if (err) return res.status(500).end();
+                            return res.status(200).send({ friends }).end();
+                        });
+                    }
+                });
+            });
+        });
+        </pre>
+        <h3>Documentation</h3>
+        <a href="https://expressjs.com/en/starter/hello-world.html">Express JS</a>
     </main>
   </body>
 </html>

@@ -3,26 +3,29 @@ import { db } from './app';
 db.run(`CREATE TABLE users (
     id INTEGER PRIMARY KEY,
     name text,
-    email text UNIQUE
+    email text UNIQUE,
+    is_admin INTEGER DEFAULT 0 CHECK (is_admin IN (0, 1)),
+    friends TEXT 
 )`, err => {
     if (err) console.log('Database creation error:', err.message);
 });
 
 const users = [
-    { name: 'Jan Kowalski', email: 'jan.kowalski@example.com' },
-    { name: 'Anna Nowak', email: 'anna.nowak@example.com' },
-    { name: 'Adam Wiśniewski', email: 'adam.wisniewski@example.com' },
-    { name: 'Marta Kaczmarek', email: 'marta.kaczmarek@example.com' },
-    { name: 'Piotr Wojciechowski', email: 'piotr.wojciechowski@example.com' },
-    { name: 'Aleksandra Czerwińska', email: 'aleksandra.czerwinska@example.com' },
-    { name: 'Tomasz Lewandowski', email: 'tomasz.lewandowski@example.com' },
-    { name: 'Karolina Malinowska', email: 'karolina.malinowska@example.com' },
-    { name: 'Michał Pawlak', email: 'michal.pawlak@example.com' },
-    { name: 'Katarzyna Szymańska', email: 'katarzyna.szymanska@example.com' },
-];
+    { name: 'Jan Kowalski', email: 'jan.kowalski@example.com', is_admin: 0, friends: 'Adam, Jan, Malwina' },
+    { name: 'Adam Nowak', email: 'adam.nowak@example.com', is_admin: 1, friends: 'Stefan, Malwina, Kasia' },
+    { name: 'Malwina Kowalczyk', email: 'malwina.kowalczyk@example.com', is_admin: 0, friends: 'Leon, Basia, Anna' },
+    { name: 'Kasia Lewandowska', email: 'kasia.lewandowska@example.com', is_admin: 1, friends: 'Adam, Malwina, Anna' },
+    { name: 'Anna Wójcik', email: 'anna.wojcik@example.com', is_admin: 0, friends: 'Sławomir, Leokadia, Żaneta' },
+    { name: 'Marcin Zieliński', email: 'marcin.zielinski@example.com', is_admin: 0, friends: 'Adam, Ola, Piotr' },
+    { name: 'Piotr Adamski', email: 'piotr.adamski@example.com', is_admin: 1, friends: 'Bogumił, Kazimierz, Anna' },
+    { name: 'Alicja Szczepańska', email: 'alicja.szczepanska@example.com', is_admin: 0, friends: 'Anatol, Jerzy, Anna' },
+    { name: 'Marta Czajkowska', email: 'marta.czajkowska@example.com', is_admin: 1, friends: 'Alojzy, Józef, Julia' },
+    { name: 'Tomasz Kozłowski', email: 'tomasz.kozlowski@example.com', is_admin: 0, friends: 'Dobromił, Anna, Karina' }
+  ];
 
 users.forEach(user => {
-    db.run(`INSERT INTO users(name, email) VALUES(?, ?)`, [user.name, user.email], err => {
+    db.run(`INSERT INTO users(name, email, is_admin, friends) VALUES(?, ?, ?, ?)`, 
+    [user.name, user.email, user.is_admin, user.friends], err => {
         if (err) {
             console.log('Database insert data error:', err.message);
         } else {
