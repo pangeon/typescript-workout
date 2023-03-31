@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>list 11.0.2</title>
+  </head>
+  <body>
+    <main>
+        <h1>list 11.0.2 - solution #1</h1>
+        <h3>URLS:</h3>
+        <a href="http://localhost:3000/Jan%20Kowalski/friends">Jan Kowalski</a><br />
+        <a href="http://localhost:3000/Adam%20Nowak/friends">Adam Nowak</a>
+        <h3>Schema:</h3>
+        <pre>
+          CREATE TABLE users (
+          id INTEGER PRIMARY KEY,
+          name text,
+          email text UNIQUE,
+          is_admin INTEGER DEFAULT 0 CHECK (is_admin IN (0, 1)),
+          friends TEXT)
+        </pre>
+        <h3>Code app:</h3>
+        <pre>
+          app.get('/:name/friends', (req, res) => {
+            const name = req.params.name;
+        
+            db.get(`SELECT id FROM users WHERE name = ?`, [name], (err, row: UserRow) => {
+                handleDatabaseResponse(res, err, row);
+            });
+          });
+        </pre>
+        <h3>Documentation</h3>
+        <a href="https://expressjs.com/en/starter/hello-world.html">Express JS</a>
+    </main>
+  </body>
+</html>

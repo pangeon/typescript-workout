@@ -1,4 +1,4 @@
-import { db } from './app';
+import { db } from './solution_1/app';
 
 db.run(`CREATE TABLE users (
     id INTEGER PRIMARY KEY,
