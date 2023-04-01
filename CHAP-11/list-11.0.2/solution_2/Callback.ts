@@ -1,0 +1,1 @@
+export type Callback = <T extends any[]>(err: any, ...data: T) => void;
