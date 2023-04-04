@@ -1,7 +1,25 @@
 # typescript-workout
 
-- exercises from: [link](https://www.packtpub.com/product/the-typescript-workshop/9781838828493)
-- authors repository: [link](https://github.com/PacktWorkshops/The-TypeScript-Workshop)
+The repository contains microprograms based on [The TypeScript Workshop](https://www.packtpub.com/product/the-typescript-workshop/9781838828493) and other TypeScript exercises.
+
+- Authors repository: [link](https://github.com/PacktWorkshops/The-TypeScript-Workshop)
+
+# Content
+
+- [CHAPTER 1](./CHAP-1/) - Fundamentals
+- [CHAPTER 2](./CHAP-2/) - Declaration files
+- [CHAPTER 3](./CHAP-3/) - Functions
+- [CHAPTER 4](./CHAP-4/) - Classes and objects
+- [CHAPTER 5](./CHAP-5/) - Interfaces and inheritance
+- [CHAPTER 6](./CHAP-6/) - Advanced types
+- [CHAPTER 7](./CHAP-7/) - Decorators
+- [CHAPTER 8](./CHAP-8/) - Dependency injection
+- [CHAPTER 9](./CHAP-9/) - Types with parameterized and conditional
+- [CHAPTER 10](./CHAP-10/) - Event loops and asynchronous behavior
+- [CHAPTER 11](./CHAP-11/) - Higher order functions and callback
+- [CHAPTER 12](./CHAP-12/) - Promises
+- [CHAPTER 13](./CHAP-13/) - Functionality async/await 
+- [CHAPTER 14](./CHAP-14/) - React
 
 # Requirements
 
