@@ -1,4 +1,4 @@
-import sqlite from "sqlite3";
+import * as sqlite3 from 'sqlite3';
 
 import { Database } from "sqlite";
 import { PromiseModel } from "../interfaces/PromiseModel";
@@ -9,7 +9,7 @@ export class PromiseDB {
     private _initlialized = false;
     constructor() {
         this._db = new Database({
-            driver: sqlite.Database,
+            driver: sqlite3.Database,
             filename: ":memory",
         });
     }

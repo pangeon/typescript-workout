@@ -2,12 +2,13 @@
   "compilerOptions": {
     "strict": true,
     "module": "commonjs",
-    "esModuleInterop": true,
+    "esModuleInterop": false,
     "target": "ES2020",
     "sourceMap": true,
     "lib": ["es2020", "dom"],
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "strictNullChecks": false,
   },
   "exclude": [
     "node_modules"
