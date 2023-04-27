@@ -1,6 +1,8 @@
 import { PromiseModel } from "../12.0.6/interfaces/PromiseModel";
 
-const data = fetch("http://localhost:3000/promise");
+const apiURL: string = "http://localhost:3000/promise";
+
+const data: Promise<Response> = fetch(apiURL);
 const container: HTMLUListElement = document.querySelector("#prog-lang-list");
 
 const new_content: HTMLInputElement = document.querySelector('#new-content');
@@ -10,14 +12,21 @@ const add_btn: HTMLInputElement = document.querySelector('#add-btn');
 const erase_btn: HTMLInputElement = document.querySelector('#erase-btn');
 
 add_btn.addEventListener("click", () => {
-  console.log(new_content.value);
+  const requestOptions = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ desc: new_content.value })
+  };
+  fetch(apiURL, requestOptions)
+  .then(response => { if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`); })
+  .catch(error => { console.error(error); });
 });
 
 erase_btn.addEventListener("click", () => {
-  console.log(id_data_to_delete.value);
+  fetch(`${apiURL}/${id_data_to_delete.value}`, { method: 'DELETE' })
+  .then(response => { if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`); })
+  .catch(error => { console.error(error); });
 });
-
-
 
 data.then(response => {
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
